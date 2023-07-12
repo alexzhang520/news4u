@@ -658,7 +658,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			ConfigurationImpl bean = new ConfigurationImpl();
 			bean.setIgnoreUnresolvablePlaceholders(true);
 			bean.setIgnoreResourceNotFound(true);
-			bean.setSystemPropertiesModeName("SYSTEM_PROPERTIES_MODE_OVERRIDE");
 
 			bean.setLocations(new Resource[] { new ClassPathResource("config_common.properties"),
 					new ClassPathResource("config_application.properties") });
