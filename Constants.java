@@ -196,4 +196,6 @@ public class Constants {
 	public static String ERR008_Error_Message = "Carton(s) is in progress.";
 	public static String ERR009 = "ERR009";
 	public static String ERR010 = "ERR010";
+	
+	public static String ERR011 = "ERR011";
 }

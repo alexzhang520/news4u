@@ -656,8 +656,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		if (properties == null) {
 			this.properties = new Properties();
 			ConfigurationImpl bean = new ConfigurationImpl();
-			bean.setIgnoreUnresolvablePlaceholders(true);
+			
 			bean.setIgnoreResourceNotFound(true);
+			
+			bean.setSystemPropertiesModeName("SYSTEM_PROPERTIES_MODE_OVERRIDE");
 
 			bean.setLocations(new Resource[] { new ClassPathResource("config_common.properties"),
 					new ClassPathResource("config_application.properties") });
@@ -667,10 +669,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				
 				String configPath = "/opt/fedex/shipping/properties/config_env.properties";
 				if (new File(configPath).exists()) {
-					FileSystemResource resource = new FileSystemResource(configPath);
+					
 					properties.load(resource.getInputStream());
 				}
-
+				bean.setIgnoreUnresolvablePlaceholders(true);
+				bean.setIgnoreResourceNotFound(true);
 			} catch (IOException e) {
 				logger.error(e.getMessage(), e);
 			}
